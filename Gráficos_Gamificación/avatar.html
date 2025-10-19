@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Creación de Avatar - Observatorio Laboral</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #E0F7FA;
+            font-family: Arial, sans-serif;
+            color: #2C3E50;
+            text-align: center;
+        }
+
+        .avatar-container {
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: normal;
+            white-space: nowrap;
+            margin-top: 10px;
+        }
+
+        #previewAvatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: none;
+            border: 2px solid #0288D1;
+            margin: 20px auto;
+        }
+
+        #btnGuardarAvatar {
+            font-weight: bold;
+            background-color: #0288D1;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        input[type="file"] {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="avatar-container">
+        <header style="margin-bottom: 28px; width: 100%;">
+            <h1 style="margin: 0 auto; font-size: 28px; text-align: center; white-space: nowrap;">
+                Sube una imagen que represente a tu avatar.
+            </h1>
+        </header>
+
+        <section>
+            <input type="file" id="avatarFile" accept="image/*">
+            <br>
+            <img id="previewAvatar" src="" alt="Tu avatar">
+            <br>
+            <button id="btnGuardarAvatar">Guardar avatar y continuar</button>
+        </section>
+    </div>
+
+    <script src="js/avatar.js"></script>
+
+    <!-- Evitar que el usuario vuelva a index.html -->
+    <script>
+        // Reemplaza el historial para evitar volver a index.html
+        history.replaceState(null, null, location.href);
+        history.pushState(null, null, location.href);
+
+        window.onpopstate = function () {
+            // Cuando el usuario pulse atrás, lo mantenemos en avatar.html
+            history.go(1);
+        };
+    </script>
+</body>
+</html>
